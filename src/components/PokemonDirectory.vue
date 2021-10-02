@@ -22,7 +22,7 @@
         >Aaron Stone</a
       >
     </p>
-    <div v-if="!loading" class="py-8">
+    <div v-if="!loading" class="flex flex-col md:flex-row py-8">
       <input
         v-model="search"
         placeholder="Search"
@@ -31,7 +31,7 @@
       <span
         v-if="search.length > 0"
         v-on:click="clearSearch()"
-        class="px-4 cursor-pointer underline"
+        class="px-4 py-2 cursor-pointer underline block"
         >Clear</span
       >
     </div>
