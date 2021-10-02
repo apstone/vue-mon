@@ -1,19 +1,20 @@
 <template>
-  <div class="pokemon">
+  <div class="pokemon w-96 lg:w-4/12 m-auto">
     <router-link to="/" class="back-link"
-      ><span>Back to Directory</span></router-link
+      ><span class="text-left">Back to Directory</span></router-link
     >
     <div v-if="pokemon">
-      <img v-bind:src="pokemon.sprites.front_default" width="250px" />
-      <h1>{{ pokemon.name }}</h1>
-      <span>{{
-        pokemon.types.map((type) => type.type.name.toUpperCase()).join(", ")
-      }}</span>
+      <pokemon-card
+        :name="pokemon.name"
+        :img="pokemon.sprites.front_default"
+        :types="pokemon.types"
+      />
     </div>
   </div>
 </template>
 
 <script>
+import PokemonCard from "../components/PokemonCard.vue";
 const Pokedex = require("pokeapi-js-wrapper");
 const customOptions = {
   cache: true,
@@ -23,7 +24,7 @@ const P = new Pokedex.Pokedex(customOptions);
 
 export default {
   name: "Pokemon",
-  components: {},
+  components: { PokemonCard },
   data: function() {
     return {
       pokemon: undefined,

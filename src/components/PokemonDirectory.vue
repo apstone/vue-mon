@@ -1,5 +1,5 @@
 <template>
-  <div id="pokemon-directory">
+  <div id="pokemon-directory" class="flex flex-col items-center">
     <img
       v-bind:class="{ loading: loading }"
       class="pokeball"
@@ -7,14 +7,14 @@
       src="../assets/pokeball.png"
       width="250"
     />
-    <div v-if="!loading" class="pokemon-container">
+    <div v-if="!loading" class="flex flex-wrap flex-row justify-center">
       <div v-for="monster in pokemon" :key="monster.id" class="pokemon">
         <router-link
           :to="{ path: `pokemon/${monster.id}` }"
           style="text-decoration: none; color: #f8f8f6;"
         >
           <img alt="Pokemon Image" :src="`./static/pokemon/${monster.img}`" />
-          <h2>{{ monster.name }}</h2>
+          <h2 class="capitalize">{{ monster.name }}</h2>
           <span>{{ monster.id }}</span>
         </router-link>
       </div>
@@ -24,12 +24,6 @@
 
 <script>
 import pokemonNames from "../pokemon";
-// const Pokedex = require("pokeapi-js-wrapper");
-// const customOptions = {
-//   cache: true,
-//   cacheImages: true,
-// };
-// const P = new Pokedex.Pokedex(customOptions);
 
 const determineIndex = (index) => {
   if (index < 10) {
@@ -73,18 +67,9 @@ export default {
 </script>
 
 <style>
-.pokemon-container {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
-}
 .pokemon {
   padding: 20px;
   width: 150px;
-}
-.pokemon h2 {
-  text-transform: capitalize;
 }
 .pokeball.loading {
   animation: spin 2s infinite;
