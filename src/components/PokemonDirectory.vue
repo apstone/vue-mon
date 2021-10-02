@@ -36,6 +36,7 @@
       >
     </div>
     <div v-if="!loading" class="flex flex-wrap flex-row justify-center">
+      <span v-if="pokemon.length === 0">No results found for {{ search }}</span>
       <div v-for="monster in pokemon" :key="monster.id" class="pokemon">
         <router-link
           :to="{ path: `pokemon/${monster.id}` }"
