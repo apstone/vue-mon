@@ -1,7 +1,7 @@
 <template>
   <div id="pokemon-card" class="flex flex-col">
     <h1 class="capitalize text-left text-5xl font-bold mt-12">{{ name }}</h1>
-    <div class="flex flex-row my-4">
+    <div class="flex flex-col md:flex-row my-4">
       <div class="flex-1">
         <img v-bind:src="img" width="250px" />
       </div>

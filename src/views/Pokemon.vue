@@ -1,5 +1,5 @@
 <template>
-  <div class="pokemon w-96 lg:w-4/12 m-auto">
+  <div class="pokemon w-80 lg:w-4/12 m-auto">
     <router-link to="/" class="back-link"
       ><span class="text-left">Back to Directory</span></router-link
     >
