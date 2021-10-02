@@ -59,7 +59,7 @@ export default {
 <style>
 html {
   background-color: #303554;
-  color: white;
+  color: #f8f8f6;
 }
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
