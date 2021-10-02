@@ -7,7 +7,7 @@
       src="../assets/pokeball.png"
       width="250"
     />
-    <h1 class="text-6xl font-bold pb-4">Vue-mon</h1>
+    <h1 class="text-6xl font-bold pb-4 px-4">Vue-mon</h1>
     <p>
       Pokedex built using
       <a href="https://vuejs.org/" target="_blank" class="underline">Vue</a>,
