@@ -67,6 +67,7 @@ export default {
 .stat-sheet {
   background-color: #f8f8f6;
   color: #303554;
+  box-shadow: 4px 4px 2px rgba(0, 0, 0, 0.5);
 }
 .ice {
   background: linear-gradient(180deg, #51c4e7 50%, #51c4e7 50%);
