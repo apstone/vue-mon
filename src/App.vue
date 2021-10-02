@@ -57,13 +57,15 @@ export default {
 </script>
 
 <style>
+html {
+  background-color: #303554;
+  color: white;
+}
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
 }
 .pokemon-container {
   display: flex;
