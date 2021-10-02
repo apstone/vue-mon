@@ -26,7 +26,7 @@
       <input
         v-model="search"
         placeholder="Search"
-        class="search px-4 py-2 px-4 w-96 rounded"
+        class="search px-4 py-2 w-80 md:w-96 rounded"
       />
       <span
         v-if="search.length > 0"
