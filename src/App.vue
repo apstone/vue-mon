@@ -29,7 +29,7 @@ import pokemonNames from "./pokemon";
 const determineIndex = (index) => {
   if (index < 10) {
     return `00${index}`;
-  } else if (index > 9 < 100) {
+  } else if (index > 9 && index < 100) {
     return `0${index}`;
   } else {
     return index;
