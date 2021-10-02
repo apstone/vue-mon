@@ -84,6 +84,13 @@ html {
   animation: spin 2s infinite;
 }
 
+@media screen and (max-width: 400px) {
+  .pokemon {
+    padding: 15px;
+    width: 125px;
+  }
+}
+
 @keyframes spin {
   0% {
     transform: rotate(0deg);
