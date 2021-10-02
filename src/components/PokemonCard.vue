@@ -3,7 +3,7 @@
     <h1 class="capitalize text-left text-5xl font-bold mt-12">{{ name }}</h1>
     <div class="flex flex-col md:flex-row my-4">
       <div class="flex-1">
-        <img v-bind:src="img" width="250px" />
+        <img v-bind:src="img" width="250px" class="m-auto" />
       </div>
       <div class="stat-sheet p-4 rounded flex-1 drop-shadow text-left">
         <h4 class="text-2xl font-bold mb-3">Stats</h4>
