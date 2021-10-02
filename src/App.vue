@@ -17,6 +17,7 @@
 </template>
 
 <script>
+import pokemonNames from "./pokemon";
 const Pokedex = require("pokeapi-js-wrapper");
 const customOptions = {
   cache: true,
@@ -35,10 +36,7 @@ export default {
   components: {},
   methods: {
     fetchPokemon: async function() {
-      const response = await P.resource("/api/v2/pokedex/2/");
-      const pokemonEntries = response.pokemon_entries;
-      const pokemonPromises = pokemonEntries.map((entry) => {
-        const name = entry.pokemon_species.name;
+      const pokemonPromises = pokemonNames.map((name) => {
         return P.getPokemonByName(name);
       });
 
