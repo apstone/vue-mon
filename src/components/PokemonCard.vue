@@ -69,6 +69,10 @@ export default {
   color: #303554;
   box-shadow: 4px 4px 2px rgba(0, 0, 0, 0.5);
 }
+.water {
+  background: linear-gradient(180deg, #4592c4 50%, #4592c4 50%);
+  background-color: #4592c4;
+}
 .dark {
   background: linear-gradient(180deg, #707070 50%, #707070 50%);
   background-color: #707070;
