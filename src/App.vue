@@ -1,69 +1,12 @@
 <template>
   <div id="app">
-    <img
-      v-bind:class="{ loading: loading }"
-      class="pokeball"
-      alt="Pokeball"
-      src="./assets/pokeball.png"
-      width="250"
-    />
-    <div v-if="!loading" class="pokemon-container">
-      <div v-for="monster in pokemon" :key="monster.id" class="pokemon">
-        <img alt="Pokemon Image" :src="`./static/pokemon/${monster.img}`" />
-        <h2>{{ monster.name }}</h2>
-        <span>{{ monster.id }}</span>
-      </div>
-    </div>
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-import pokemonNames from "./pokemon";
-// const Pokedex = require("pokeapi-js-wrapper");
-// const customOptions = {
-//   cache: true,
-//   cacheImages: true,
-// };
-// const P = new Pokedex.Pokedex(customOptions);
-
-const determineIndex = (index) => {
-  if (index < 10) {
-    return `00${index}`;
-  } else if (index > 9 && index < 100) {
-    return `0${index}`;
-  } else {
-    return index;
-  }
-};
-
 export default {
   name: "App",
-  data: function() {
-    return {
-      pokemon: [],
-      loading: true,
-    };
-  },
-  components: {},
-  methods: {
-    fetchPokemon: async function() {
-      const pokemon = pokemonNames.map((name, index) => {
-        return {
-          id: index + 1,
-          name: name,
-          img: `${determineIndex(index + 1)}.png`,
-        };
-      });
-
-      return pokemon;
-    },
-  },
-  mounted: function() {
-    this.fetchPokemon().then((data) => {
-      this.pokemon = data;
-      this.loading = false;
-    });
-  },
 };
 </script>
 
@@ -77,37 +20,5 @@ html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-}
-.pokemon-container {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-.pokemon {
-  padding: 20px;
-  width: 150px;
-}
-.pokemon h2 {
-  text-transform: capitalize;
-}
-.pokeball.loading {
-  animation: spin 2s infinite;
-}
-
-@media screen and (max-width: 400px) {
-  .pokemon {
-    padding: 15px;
-    width: 125px;
-  }
-}
-
-@keyframes spin {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
 }
 </style>
