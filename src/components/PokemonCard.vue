@@ -69,6 +69,38 @@ export default {
   color: #303554;
   box-shadow: 4px 4px 2px rgba(0, 0, 0, 0.5);
 }
+.dark {
+  background: linear-gradient(180deg, #707070 50%, #707070 50%);
+  background-color: #707070;
+}
+.dragon {
+  background: linear-gradient(180deg, #53a4cf 50%, #f16e57 50%);
+  background-color: #53a4cf;
+}
+.fighting {
+  background: linear-gradient(180deg, #d56723 50%, #d56723 50%);
+  background-color: #d56723;
+}
+.ground {
+  background: linear-gradient(180deg, #f7de3f 50%, #ab9842 50%);
+  background-color: #f7de3f;
+}
+.fairy {
+  background: linear-gradient(180deg, #fdb9e9 50%, #fdb9e9 50%);
+  background-color: #fdb9e9;
+}
+.rock {
+  background: linear-gradient(180deg, #a38c21 50%, #a38c21 50%);
+  background-color: #a38c21;
+}
+.electric {
+  background: linear-gradient(180deg, #eed535 50%, #eed535 50%);
+  background-color: #eed535;
+}
+.normal {
+  background: linear-gradient(180deg, #a4acaf 50%, #a4acaf 50%);
+  background-color: #a4acaf;
+}
 .ice {
   background: linear-gradient(180deg, #51c4e7 50%, #51c4e7 50%);
   background-color: #51c4e7;
