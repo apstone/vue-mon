@@ -1,13 +1,30 @@
 <template>
   <div id="pokemon-card" class="flex flex-col">
-    <img v-bind:src="img" width="250px" />
+    <div class="flex flex-row my-12">
+      <div class="flex-1">
+        <img v-bind:src="img" width="250px" />
+      </div>
+      <div class="stat-sheet p-4 rounded flex-1 drop-shadow text-left">
+        <h4 class="text-2xl font-bold mb-3">Stats</h4>
+        <div
+          v-for="(stat, index) in stats"
+          :key="index"
+          class="stat-container flex flex-row justify-between"
+        >
+          <span class="stat-title text-lg"
+            >{{ formatStatTitle(stat.stat.name) }}:
+          </span>
+          <span class="stat-value">{{ stat.base_stat }}</span>
+        </div>
+      </div>
+    </div>
     <h1 class="capitalize text-left text-5xl font-bold">{{ name }}</h1>
     <div class="types text-left py-4">
       <span
         v-for="type in types"
         :key="type.slot"
         :class="type.type.name"
-        class="type px-4 py-2 mr-2"
+        class="type px-4 py-2 mr-2 rounded text-center capitalize font-bold"
       >
         {{ type.type.name }}
       </span>
@@ -22,14 +39,34 @@ export default {
     name: String,
     img: String,
     types: Array,
+    stats: Array,
+  },
+  methods: {
+    formatStatTitle: function formatStatTitle(title) {
+      switch (title) {
+        case "hp":
+          return "HP";
+        case "attack":
+          return "Attack";
+        case "defense":
+          return "Defense";
+        case "special-attack":
+          return "Special Attack";
+        case "special-defense":
+          return "Special Defense";
+        case "speed":
+          return "Speed";
+        default:
+          break;
+      }
+    },
   },
 };
 </script>
 <style scoped>
-.type {
-  text-align: center;
-  border-radius: 5px;
-  text-transform: capitalize;
+.stat-sheet {
+  background-color: #f8f8f6;
+  color: #303554;
 }
 .ice {
   background: linear-gradient(180deg, #51c4e7 50%, #51c4e7 50%);

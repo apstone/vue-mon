@@ -8,6 +8,7 @@
         :name="pokemon.name"
         :img="pokemon.sprites.front_default"
         :types="pokemon.types"
+        :stats="pokemon.stats"
       />
     </div>
   </div>
