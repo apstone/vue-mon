@@ -1,6 +1,7 @@
 <template>
   <div id="pokemon-card" class="flex flex-col">
-    <div class="flex flex-row my-12">
+    <h1 class="capitalize text-left text-5xl font-bold mt-12">{{ name }}</h1>
+    <div class="flex flex-row my-4">
       <div class="flex-1">
         <img v-bind:src="img" width="250px" />
       </div>
@@ -18,7 +19,6 @@
         </div>
       </div>
     </div>
-    <h1 class="capitalize text-left text-5xl font-bold">{{ name }}</h1>
     <div class="types text-left py-4">
       <span
         v-for="type in types"
