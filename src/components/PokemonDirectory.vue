@@ -2,18 +2,37 @@
   <div id="pokemon-directory" class="flex flex-col items-center">
     <img
       v-bind:class="{ loading: loading }"
-      class="pokeball"
+      class="pokeball mb-8"
       alt="Pokeball"
       src="../assets/pokeball.png"
       width="250"
     />
+    <h1 class="text-6xl font-bold pb-4">Vue-mon</h1>
+    <p>
+      Pokedex built using
+      <a href="https://vuejs.org/" target="_blank" class="underline">Vue</a>,
+      <a href="https://tailwindcss.com/" target="_blank" class="underline"
+        >TailwindCSS</a
+      >, and
+      <a href="https://pokeapi.co/docs/v2" target="_blank" class="underline"
+        >PokeAPI</a
+      >
+      by
+      <a href="https://aaronstone.dev" target="_blank" class="underline"
+        >Aaron Stone</a
+      >
+    </p>
     <div v-if="!loading" class="flex flex-wrap flex-row justify-center">
       <div v-for="monster in pokemon" :key="monster.id" class="pokemon">
         <router-link
           :to="{ path: `pokemon/${monster.id}` }"
           style="text-decoration: none; color: #f8f8f6;"
         >
-          <img alt="Pokemon Image" :src="`./static/pokemon/${monster.img}`" />
+          <img
+            alt="Pokemon Image"
+            :src="`./static/pokemon/${monster.img}`"
+            class="m-auto"
+          />
           <h2 class="capitalize">{{ monster.name }}</h2>
           <span>{{ monster.id }}</span>
         </router-link>
