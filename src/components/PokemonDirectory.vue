@@ -78,11 +78,19 @@ export default {
   },
   components: {},
   watch: {
-    search: async function(val) {
+    search: async function(val, prevVal) {
       if (val.length > 0) {
-        this.pokemon = this.pokemon.filter((monster) =>
-          monster.name.startsWith(val)
-        );
+        if (prevVal.length < val.length) {
+          this.pokemon = this.pokemon.filter((monster) => {
+            return monster.name.startsWith(val);
+          });
+        } else {
+          this.fetchPokemon().then((data) => {
+            this.pokemon = data.filter((monster) => {
+              return monster.name.startsWith(val);
+            });
+          });
+        }
       } else {
         this.pokemon = await this.fetchPokemon();
       }
