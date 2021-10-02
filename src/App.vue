@@ -9,8 +9,9 @@
     />
     <div v-if="!loading" class="pokemon-container">
       <div v-for="monster in pokemon" :key="monster.id" class="pokemon">
-        <img alt="Pokemon Image" v-bind:src="monster.sprites.front_default" />
+        <img alt="Pokemon Image" :src="`./static/pokemon/${monster.img}`" />
         <h2>{{ monster.name }}</h2>
+        <span>{{ monster.id }}</span>
       </div>
     </div>
   </div>
@@ -18,12 +19,22 @@
 
 <script>
 import pokemonNames from "./pokemon";
-const Pokedex = require("pokeapi-js-wrapper");
-const customOptions = {
-  cache: true,
-  cacheImages: true,
+// const Pokedex = require("pokeapi-js-wrapper");
+// const customOptions = {
+//   cache: true,
+//   cacheImages: true,
+// };
+// const P = new Pokedex.Pokedex(customOptions);
+
+const determineIndex = (index) => {
+  if (index < 10) {
+    return `00${index}`;
+  } else if (index > 9 < 100) {
+    return `0${index}`;
+  } else {
+    return index;
+  }
 };
-const P = new Pokedex.Pokedex(customOptions);
 
 export default {
   name: "App",
@@ -36,11 +47,13 @@ export default {
   components: {},
   methods: {
     fetchPokemon: async function() {
-      const pokemonPromises = pokemonNames.map((name) => {
-        return P.getPokemonByName(name);
+      const pokemon = pokemonNames.map((name, index) => {
+        return {
+          id: index + 1,
+          name: name,
+          img: `${determineIndex(index + 1)}.png`,
+        };
       });
-
-      const pokemon = await Promise.all(pokemonPromises);
 
       return pokemon;
     },
