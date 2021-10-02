@@ -8,7 +8,7 @@
       width="250"
     />
     <h1 class="text-6xl font-bold pb-4 px-4">Vue-mon</h1>
-    <p>
+    <p class="px-4">
       Pokedex built using
       <a href="https://vuejs.org/" target="_blank" class="underline">Vue</a>,
       <a href="https://tailwindcss.com/" target="_blank" class="underline"
@@ -26,7 +26,7 @@
       <input
         v-model="search"
         placeholder="Search"
-        class="search px-4 py-2 w-96 rounded"
+        class="search px-4 py-2 px-4 w-96 rounded"
       />
       <span
         v-if="search.length > 0"
