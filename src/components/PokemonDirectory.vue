@@ -22,6 +22,19 @@
         >Aaron Stone</a
       >
     </p>
+    <div v-if="!loading" class="py-8">
+      <input
+        v-model="search"
+        placeholder="Search"
+        class="search px-4 py-2 w-96 rounded"
+      />
+      <span
+        v-if="search.length > 0"
+        v-on:click="clearSearch()"
+        class="px-4 cursor-pointer underline"
+        >Clear</span
+      >
+    </div>
     <div v-if="!loading" class="flex flex-wrap flex-row justify-center">
       <div v-for="monster in pokemon" :key="monster.id" class="pokemon">
         <router-link
@@ -60,9 +73,21 @@ export default {
     return {
       pokemon: [],
       loading: true,
+      search: "",
     };
   },
   components: {},
+  watch: {
+    search: async function(val) {
+      if (val.length > 0) {
+        this.pokemon = this.pokemon.filter((monster) =>
+          monster.name.startsWith(val)
+        );
+      } else {
+        this.pokemon = await this.fetchPokemon();
+      }
+    },
+  },
   methods: {
     fetchPokemon: async function() {
       const pokemon = pokemonNames.map((name, index) => {
@@ -74,6 +99,9 @@ export default {
       });
 
       return pokemon;
+    },
+    clearSearch: function() {
+      this.search = "";
     },
   },
   mounted: function() {
@@ -92,6 +120,9 @@ export default {
 }
 .pokeball.loading {
   animation: spin 2s infinite;
+}
+.search {
+  color: #303554;
 }
 
 @media screen and (max-width: 400px) {
