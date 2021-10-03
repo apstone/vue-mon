@@ -48,7 +48,8 @@
           :key="index"
           class="capitalize"
         >
-          {{ ability.ability.name.replace("-", " ") }}
+          <b>{{ ability.ability.name.replace("-", " ") }}</b> -
+          <i>{{ ability.flavor_text }}</i>
         </li>
       </ul>
     </div>
@@ -93,6 +94,10 @@ export default {
   background-color: #f8f8f6;
   color: #303554;
   box-shadow: 4px 4px 2px rgba(0, 0, 0, 0.5);
+}
+.bug {
+  background: linear-gradient(180deg, #729f3f 50%, #729f3f 50%);
+  background-color: #729f3f;
 }
 .water {
   background: linear-gradient(180deg, #4592c4 50%, #4592c4 50%);

@@ -10,9 +10,7 @@
         :types="pokemon.types"
         :stats="pokemon.stats"
         :species="species"
-        :abilities="
-          pokemon.abilities.filter((ability) => ability.is_hidden === false)
-        "
+        :abilities="pokemon.abilities.filter((ability) => !ability.is_hidden)"
       />
     </div>
   </div>
@@ -41,6 +39,25 @@ export default {
     fetchPokemon: async function(id) {
       const pokemon = await P.getPokemonByName(id);
       const species = await P.getPokemonSpeciesByName(id);
+
+      for await (const ability of pokemon.abilities.filter(
+        (ability) => !ability.is_hidden
+      )) {
+        const abilityFlavor = await P.getAbilityByName(ability.ability.name);
+        const pokemonAbilityIndex = pokemon.abilities.findIndex(
+          (x) => x.ability.name === ability.ability.name
+        );
+
+        if (
+          pokemonAbilityIndex > -1 &&
+          abilityFlavor.flavor_text_entries.length > 0
+        ) {
+          pokemon.abilities[pokemonAbilityIndex] = {
+            ...pokemon.abilities[pokemonAbilityIndex],
+            flavor_text: abilityFlavor.flavor_text_entries[0].flavor_text,
+          };
+        }
+      }
       console.log(pokemon);
       console.log(species);
       return {
