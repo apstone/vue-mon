@@ -83,12 +83,12 @@ export default {
       if (val.length > 0) {
         if (prevVal.length < val.length) {
           this.pokemon = this.pokemon.filter((monster) => {
-            return monster.name.startsWith(val);
+            return monster.name.startsWith(val.toLowerCase());
           });
         } else {
           this.fetchPokemon().then((data) => {
             this.pokemon = data.filter((monster) => {
-              return monster.name.startsWith(val);
+              return monster.name.startsWith(val.toLowerCase());
             });
           });
         }
