@@ -1,13 +1,13 @@
 <template>
   <div id="pokemon-card" class="flex flex-col">
     <h1 class="capitalize text-left text-5xl font-bold mt-12">{{ name }}</h1>
-    <div class="types text-left py-2">
+    <div class="types text-left py-4">
       <div>
         <span
           v-for="type in types"
           :key="type.slot"
           :class="type.type.name"
-          class="type px-4 p-1 mr-2 rounded text-center capitalize font-bold"
+          class="type px-4 p-1 mr-2 rounded text-center capitalize font-bold inline-block"
         >
           {{ type.type.name }}
         </span>
