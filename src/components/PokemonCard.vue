@@ -33,8 +33,10 @@
         </div>
       </div>
     </div>
-    <div v-if="species.flavor_text_entries.length > 0">
-      <p class="text-left py-2">
+    <div v-if="species.flavor_text_entries.length > 0" class="text-left">
+      <h4 class="text-2xl font-bold my-4">About</h4>
+
+      <p class="text-left">
         {{ species.flavor_text_entries[0].flavor_text.replace("\u000c", " ") }}
       </p>
     </div>
