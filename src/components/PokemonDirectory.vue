@@ -128,8 +128,9 @@ export default {
   width: 150px;
 }
 .pokeball:hover,
-.pokeball:active {
-  animation: wiggle 1s 3;
+.pokeball:active,
+.pokeball:focus {
+  animation: wiggle 1s 2;
 }
 .pokeball.loading {
   animation: spin 2s infinite;
