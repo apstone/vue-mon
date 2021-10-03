@@ -1,33 +1,54 @@
 <template>
   <div id="pokemon-card" class="flex flex-col">
     <h1 class="capitalize text-left text-5xl font-bold mt-12">{{ name }}</h1>
+    <div class="types text-left py-2">
+      <div>
+        <span
+          v-for="type in types"
+          :key="type.slot"
+          :class="type.type.name"
+          class="type px-4 p-1 mr-2 rounded text-center capitalize font-bold"
+        >
+          {{ type.type.name }}
+        </span>
+      </div>
+    </div>
     <div class="flex flex-col md:flex-row my-4">
-      <div class="flex-1">
+      <div class="flex-1 md:pr-4">
         <img v-bind:src="img" width="250px" class="m-auto" />
       </div>
-      <div class="stat-sheet p-4 rounded flex-1 drop-shadow text-left">
-        <h4 class="text-2xl font-bold mb-3">Stats</h4>
-        <div
-          v-for="(stat, index) in stats"
-          :key="index"
-          class="stat-container flex flex-row justify-between"
-        >
-          <span class="stat-title text-lg"
-            >{{ formatStatTitle(stat.stat.name) }}:
-          </span>
-          <span class="stat-value">{{ stat.base_stat }}</span>
+      <div class="flex-1 md:pl-4">
+        <div class="stat-sheet p-4 rounded drop-shadow text-left">
+          <h4 class="text-2xl font-bold mb-3">Stats</h4>
+          <div
+            v-for="(stat, index) in stats"
+            :key="index"
+            class="stat-container flex flex-row justify-between"
+          >
+            <span class="stat-title text-lg"
+              >{{ formatStatTitle(stat.stat.name) }}:
+            </span>
+            <span class="stat-value">{{ stat.base_stat }}</span>
+          </div>
         </div>
       </div>
     </div>
-    <div class="types text-left py-4">
-      <span
-        v-for="type in types"
-        :key="type.slot"
-        :class="type.type.name"
-        class="type px-4 py-2 mr-2 rounded text-center capitalize font-bold"
-      >
-        {{ type.type.name }}
-      </span>
+    <div v-if="species.flavor_text_entries.length > 0">
+      <p class="text-left py-2">
+        {{ species.flavor_text_entries[0].flavor_text.replace("\u000c", " ") }}
+      </p>
+    </div>
+    <div class="text-left">
+      <h4 class="text-2xl font-bold my-4">Abilities</h4>
+      <ul class="list-inside list-disc">
+        <li
+          v-for="(ability, index) in abilities"
+          :key="index"
+          class="capitalize"
+        >
+          {{ ability.ability.name.replace("-", " ") }}
+        </li>
+      </ul>
     </div>
   </div>
 </template>
@@ -40,6 +61,8 @@ export default {
     img: String,
     types: Array,
     stats: Array,
+    species: Object,
+    abilities: Array,
   },
   methods: {
     formatStatTitle: function formatStatTitle(title) {

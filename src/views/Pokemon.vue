@@ -9,6 +9,10 @@
         :img="pokemon.sprites.front_default"
         :types="pokemon.types"
         :stats="pokemon.stats"
+        :species="species"
+        :abilities="
+          pokemon.abilities.filter((ability) => ability.is_hidden === false)
+        "
       />
     </div>
   </div>
@@ -29,19 +33,26 @@ export default {
   data: function() {
     return {
       pokemon: undefined,
+      species: undefined,
       loading: true,
     };
   },
   methods: {
     fetchPokemon: async function(id) {
       const pokemon = await P.getPokemonByName(id);
+      const species = await P.getPokemonSpeciesByName(id);
       console.log(pokemon);
-      return pokemon;
+      console.log(species);
+      return {
+        pokemon,
+        species,
+      };
     },
   },
   mounted: function() {
     this.fetchPokemon(this.$route.params.id).then((data) => {
-      this.pokemon = data;
+      this.pokemon = data.pokemon;
+      this.species = data.species;
       this.loading = false;
     });
   },
