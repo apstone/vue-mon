@@ -127,6 +127,10 @@ export default {
   padding: 20px;
   width: 150px;
 }
+.pokeball:hover,
+.pokeball:active {
+  animation: wiggle 1s 3;
+}
 .pokeball.loading {
   animation: spin 2s infinite;
 }
@@ -138,6 +142,24 @@ export default {
   .pokemon {
     padding: 15px;
     width: 125px;
+  }
+}
+
+@keyframes wiggle {
+  0% {
+    transform: rotate(0deg);
+  }
+  80% {
+    transform: rotate(0deg);
+  }
+  85% {
+    transform: rotate(5deg);
+  }
+  95% {
+    transform: rotate(-5deg);
+  }
+  100% {
+    transform: rotate(0deg);
   }
 }
 
